@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PC Store</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <script type="text/javascript" src="index.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Anton&display=swap" rel="stylesheet"> 
+
+</head>
+<body onload ="CreateTable()">
+    <header class="PC-store-sales-container">
+            <div class="header"> <img src="images/div1.jpg"></div>
+            <h1>Computer Shopping</h1>
+    </header>
+    <section class="section2">
+        <h2>Historial de ventas</h2>
+        <a href="#"class="buttom1"id ="buttom1"onclick ="showOptions()">Nueva venta</a>
+          <div id="newSale">
+            <p class="itemNewSale">seleccione un componente:
+                <select name="components" id="component" multiple>
+                    <option value="Monitor GPRS 3000">Monitor GPRS 3000</option>
+                    <option value="Motherboard ASUS 1500">Motherboard ASUS 1500</option>
+                    <option value="Monitor ASC 543">Monitor ASC 543</option>
+                    <option value="Motherboard ASUS 1200">Motherboard ASUS 1200</option>
+                    <option value="Motherboard MZI">Motherboard MZI</option>
+                    <option value="HDD Toyiva">HDD Toyiva</option>
+                    <option value="HDD Wezter Dishital">HDD Wezter Dishital</option>
+                    <option value="RAM Quinston">RAM Quinston</option>
+                    <option value="RAM Quinston Fury">RAM Quinston Fury</option>
+                </select>
+            <p class="itemNewSale">seleccione una vendedora:
+                <select name="sellers" id="sellers">
+                    <option value="Ada">Ada</option>
+                    <option value="Grace">Grace</option>
+                    <option value="Hedy">Hedy</option>
+                    <option value="Sheryl">Sheryl</option>
+                </select>
+               </p> 
+            <p class="itemNewSale">seleccione una sucursal:
+                <select name="branch" id="branch">
+                    <option value="Centro">Centro</option>
+                    <option value="Caballito">Caballito</option>
+                </select>
+                
+            </p>
+            <input type="submit" value="Enviar" id="sent" onclick ="newSale()">
+
+            </p>
+            
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <td class= "itemTd">Fecha (mes /año)</td>
+                    <td class= "itemTd">Vendedora</td>
+                    <td class= "itemTd">Componentes</td>
+                    <td class= "itemTd">sucursal</td>
+                    </tr>
+                </thead>
+            <tbody id="record">
+            </tbody>
+        </table>
+    </section>
+    
+
+    <div class="report"id="report">
+        <p id="report1">Reporte: </p>
+    </div>
+
+
+    <div class="report-detail" id="report-detail">
+        <p id="repSeller">La vendedora que más ingresos genero:</p>
+        <p id="repProduct">El producto más se vendio fue:</p>
+    </div>
+
+    <footer class="buttom"><img src="images/div1.jpg"></footer>   
+</body>
+</html>
