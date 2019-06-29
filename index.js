@@ -70,14 +70,22 @@ const CreateTable = () => {
     let tdComponents = document.createElement('td')
     tdComponents.innerText = e.components
     trSale.appendChild(tdComponents)
-    //console.log(tdComponents)
+    //console.log(e.components)
+    
     let tdBranch = document.createElement('td')
     tdBranch.innerText = e.branch
     trSale.appendChild(tdBranch)
+    //totalPrice(e.components)
+
+    let tdTotalPrice = document.createElement('td')
+    tdTotalPrice.innerText = totalPrice(e.components)
+    trSale.appendChild(tdTotalPrice)
     //console.log(tdBranch)
     container.appendChild(trSale)
     
     })
+
+    
     
     
 }
@@ -87,7 +95,7 @@ const showOptions = () => {
     let divShow = document.getElementById('newSale')
     //console.log(divShow)
     
-    divShow.style.display= 'block'
+    divShow.style.display = 'block'
     
     
     
@@ -133,7 +141,7 @@ const newSale = () => {
         shop.salesList.map(function(e){
         e.components.map(function(i){
          if(component === i){
-            counter = counter + 1
+         counter = counter + 1
          }
       })
      })
@@ -142,17 +150,26 @@ const newSale = () => {
       }
       console.log(quantitySalesComponents("Monitor ASC 543"))
 
-     const totalPrice = ( ) => {
-         let sumPrice = 0
-         shop.salesList.components.map(function(e){
-         shop.priceList.component.map(function(i){
-         if(e === i.component)
-             sumPrice = 
-         
-         })
-           
-         })
-        }
+     const totalPrice = (components) => {
+        let sumPrice = 0
+        //shop.salesList.map(function(e){
+            components.map(function(comp){
+               // console.log(comp)
+            
+            
+                shop.priceList.map(function(i){
+                    // console.log(i)
+                    if(comp === i.component){
+                        sumPrice += i.price
+                    }
+                    //console.log(sumPrice) })
+                })
+            })
+            //console.log (sumPrice)
+            return sumPrice
 
-      
-    
+        //})
+     }
+
+//totalPrice()
+
