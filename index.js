@@ -103,11 +103,13 @@ const showOptions = () => {
 
 const newSale = () => {
     let sentItem = document.getElementById('sent')
-    //console.log(sentItem)
+     //console.log(sentItem)
     let sale =  { date:"", nameSeller: "", components: [], branch: ""}
     let components = document.getElementById('components')
-    sale.components = components.value
-    console.log(sale.components) 
+    let selectedOptions = Array.from(components.selectedOptions)
+    sale.components = selectedOptions.map(function(e){
+        return e.value
+    })
     let today = new Date
     sale.date = new Date (today.getFullYear(),today.getMonth(),today.getDate())
     //console.log(sale.date)
@@ -116,12 +118,15 @@ const newSale = () => {
     //console.log(sale.nameSeller)
     let branch = document.getElementById('branch')
     sale.branch = branch.value
-    shop.salesList.push(sale)
-    
-    console.log(sale)
+    sentItem = shop.salesList.push(sale)
+   // debugger;
+    //console.log(sale)
+    CreateTable()
+
+}
+     
 
 
-    }
     
     const quantitySalesComponents = (component) =>{
         let counter = 0
@@ -136,6 +141,18 @@ const newSale = () => {
         
       }
       console.log(quantitySalesComponents("Monitor ASC 543"))
+
+     const totalPrice = ( ) => {
+         let sumPrice = 0
+         shop.salesList.components.map(function(e){
+         shop.priceList.component.map(function(i){
+         if(e === i.component)
+             sumPrice = 
+         
+         })
+           
+         })
+        }
 
       
     
