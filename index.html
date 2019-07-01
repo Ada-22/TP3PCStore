@@ -16,10 +16,10 @@
             <h1>Computer Shopping</h1>
     </header>
     <section class="section2">
-        <h2>Historial de ventas</h2>
+        <h2>Control de ventas</h2>
         <a href="#"class="buttom1"id ="buttom1"onclick ="showOptions()">Nueva venta</a>
-          <div id="newSale">
-            <p class="itemNewSale">seleccione un componente:
+          <div id="newSale" class="newSale">
+        <p class="itemNewSale">seleccione un componente:</p>
                 <select name="components" id="components" multiple>
                     <option value="Monitor GPRS 3000">Monitor GPRS 3000</option>
                     <option value="Motherboard ASUS 1500">Motherboard ASUS 1500</option>
@@ -31,6 +31,7 @@
                     <option value="RAM Quinston">RAM Quinston</option>
                     <option value="RAM Quinston Fury">RAM Quinston Fury</option>
                 </select>
+
             <p class="itemNewSale">seleccione una vendedora:
                 <select name="sellers" id="sellers">
                     <option value="Ada">Ada</option>
@@ -38,19 +39,26 @@
                     <option value="Hedy">Hedy</option>
                     <option value="Sheryl">Sheryl</option>
                 </select>
-               </p> 
+            </p> 
             <p class="itemNewSale">seleccione una sucursal:
                 <select name="branch" id="branch">
                     <option value="Centro">Centro</option>
                     <option value="Caballito">Caballito</option>
                 </select>
-                
             </p>
+            <div class= "shoppingCart">
+                    <ul id= "listShopping">
+    
+                    </ul>
+                    <button onclick="addShoppingCart()">Agregar a carrito</button>
+                </div>
+            
             <input type="submit" value="Enviar" id="sent" onclick ="newSale()">
 
-            </p>
+
             
-        </div>
+            </div>
+            
         <table>
             <thead>
                 <tr>
@@ -59,7 +67,7 @@
                     <td class= "itemTd">Componentes</td>
                     <td class= "itemTd">Sucursal</td>
                     <td class= "itemTd">Precio Total</td>
-
+                    
 
 
 
@@ -77,8 +85,8 @@
 
 
     <div class="report-detail" id="report-detail">
-        <p id="repSeller">La vendedora que más ingresos genero:</p>
-        <p id="repProduct">El producto más se vendio fue:</p>
+        <p id="repSeller">La vendedora que más ingresos genero fue: </p>
+        <p id="repProduct">El producto que más se vendio fue:</p>
     </div>
 
     <footer class="buttom"><img src="images/div1.jpg"></footer>   
