@@ -100,14 +100,6 @@ const showOptions = () => {
     
     
 }
-//function sale (date, nameSeller, components, branch){
-  
-    //this.date = date
-    //this.nameSeller = nameSeller
-   // this.components = components
-   // this.branch = branch
-    
-//}
 
 const newSale = () => {
     let sentItem = document.getElementById('sent')
@@ -146,47 +138,21 @@ const newSale = () => {
    // })
 //}
 
-     
-
-
-    
-    const quantitySalesComponents = (component) =>{
-        let counter = 0
-        shop.salesList.map(function(e){
-        e.components.map(function(i){
-         if(component === i){
-         counter = counter + 1
-         }
-      })
-     })
-        return counter
-        
-      }
-      console.log(quantitySalesComponents("Monitor ASC 543"))
-
       const totalPrice = (components) => {
         let sumPrice = 0
-        //shop.salesList.map(function(e){
-            components.map(function(comp){
-               // console.log(comp)
-            
-            
-                shop.priceList.map(function(i){
-                    // console.log(i)
-                    if(comp === i.component){
-                        sumPrice += i.price
-                    }
-                    //console.log(sumPrice) })
-                })
+          components.map(function(comp){
+            shop.priceList.map(function(i){
+                
+                if(comp === i.component){
+                    sumPrice += i.price
+                }
+                
             })
-            //console.log (sumPrice)
-            return sumPrice
-
-        //})
-     }
-
-//totalPrice()
-
+        })
+    
+        return sumPrice
+}  
+            
 //1) precioMaquina(componentes): recibe un array de componentes y devuelve el precio de la máquina que se puede armar con
 // esos componentes, que es la suma de los precios de cada componente incluido.
 const machinePrice = sale => {
