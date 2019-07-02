@@ -34,8 +34,8 @@ const local = {
 
      return machinePrice
 }
-
-console.log(machinePrice(["Monitor ASC 543", "Motherboard MZI"]))
+const machine = ["Monitor ASC 543", "Motherboard MZI"]
+console.log(`La venta de ${machine} tiene un costo de ARS ${machinePrice(machine)}`)
 
 //2) cantidadVentasComponente(componente): recibe un componente y devuelve la cantidad de veces que fue vendido, o sea que
 // formó parte de una máquina que se vendió. La lista de ventas no se pasa por parámetro, se asume que está identificada
@@ -51,8 +51,8 @@ const saleQuantity = (sale) => {
     })
     return saleCount
 }
-
-console.log(saleQuantity("Monitor ASC 543"))
+const nameCom = "Monitor ASC 543"
+console.log(`El compononte ${nameCom} fue vendido ${saleQuantity(nameCom)} veces`)
 
 // 3) vendedoraDelMes(mes, anio), se le pasa dos parámetros numéricos, (mes, anio) y devuelve el nombre de la vendedora
 // que más vendió en plata en el mes. O sea no cantidad de ventas, sino importe total de las ventas. El importe de una
@@ -74,7 +74,11 @@ const monthlySales = (month, year, data = local.sales) => {
     const monthlyMoney = machinePrice(eachSale)
     return monthlyMoney
  }
- console.log(monthlySales(0,2019))
+
+ const mes = 1
+ const anno =2019
+ //console.log(monthlySales(1,2019))
+ console.log(`Las ventas para el mes ${mes} del año ${anno} fueron de ARS ${monthlySales(mes, anno)}`)
 
  //5) ventasVendedora(nombre): Obtener las ventas totales realizadas por una vendedora sin límite de fecha.
 const saleSeller = name => {
@@ -85,7 +89,9 @@ const saleSeller = name => {
     return sellerRevenue
 }
 
-console.log(saleSeller("Ada"))
+const nameS = "Ada"
+console.log(`Las ventas hechas por ${nameS} fueron de ARS ${saleSeller(nameS)}`)
+//console.log(saleSeller("Ada"))
 
 //6) componenteMasVendido(): Devuelve el nombre del componente que más ventas tuvo historicamente. El dato de la cantidad
 // de ventas es el que indica la función cantidadVentasComponente
@@ -102,7 +108,8 @@ const mostSold = () =>{
      if (aux === total) componentefinal = componente
     }) 
 
-    console.log(componentefinal)
+    console.log(`El componente mas vendido es ${componentefinal}`)
+    //console.log(componentefinal)
 }
 
 mostSold()
@@ -130,8 +137,9 @@ mostSold()
      const branchRevenue = machinePrice(arraySalesBranch)
      return branchRevenue
  }
-
- console.log(saleBranch("Centro"))
+const sucur = "Centro"
+ console.log(`Las ventas totales de la sucursal ${sucur} fueron de ARS ${saleBranch(sucur)} `)
+ //console.log(saleBranch("Centro"))
 
 //9) Las funciones ventasSucursal y ventasVendedora tienen mucho código en común, ya que es la misma funcionalidad pero 
 //trabajando con una propiedad distinta. Entonces, ¿cómo harías para que ambas funciones reutilicen código y evitemos 
