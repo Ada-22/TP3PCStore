@@ -64,7 +64,7 @@ console.log(`El compononte ${nameCom} fue vendido ${saleQuantity(nameCom)} veces
 
 // 4) ventasMes(mes, anio): Obtener las ventas de un mes. El mes es un número entero que va desde el 1 (enero) hasta el 
 //12 (diciembre).
-const monthlySales = (month, year, data = local.sales) => {
+const monthlySales = (year, month, data = local.sales) => {
     let eachSale = []
     data.forEach(({date, components}) =>{
         if (date.getFullYear()===year && date.getMonth() === month-1) {
@@ -111,7 +111,6 @@ const mostSold = () =>{
     console.log(`El componente mas vendido es ${componentefinal}`)
     //console.log(componentefinal)
 }
-
 mostSold()
 
  //7) huboVentas(mes, anio): que indica si hubo ventas en un mes determinado. El mes es un número entero que va desde el 
@@ -160,15 +159,54 @@ const sucur = "Centro"
 
 //11.a) renderPorMes(): Muestra una lista ordenada del importe total vendido por cada mes/año
 
+const monthlyRender = year => {
+    let salesPerMonth = [
+        {month:"enero", sales:undefined},
+        {month:"febrero", sales:undefined},
+        {month:"marzo", sales:undefined},
+        {month:"abril", sales:undefined},
+        {month:"mayo", sales:undefined},
+        {month:"junio", sales:undefined},
+        {month:"julio", sales:undefined},
+        {month:"agosto", sales:undefined},
+        {month:"septiembre", sales:undefined},
+        {month:"octubre", sales:undefined},
+        {month:"noviembre", sales:undefined},
+        {month:"diciembre", sales:undefined}, 
+    ]
+    salesPerMonth.map((eachMonth,i)=>{
+        eachMonth.sales = (monthlySales(year,i+1))
+    })
+    return salesPerMonth
+}
+console.log(`Las ventas mensuales durante el año 2019 fueron: `)
+console.table (monthlyRender(2019))
 
 //11.b) renderPorSucursal(): Muestra una lista del importe total vendido por cada sucursal
 
+const branchRender = () =>{
+    let saleBranches 
+    local.branch.forEach(e => {
+        saleBranches = saleBranch(e)
+        console.log(`Las ventas totales en la sucursal de ${e} son: $${saleBranches}`)
+    })
+    return saleBranches
+}
+console.log(`Las ventas por sucursal fueron: `)
+branchRender()
 
 
 //11.c) render(): Tiene que mostrar la unión de los dos reportes anteriores, cual fue el producto más vendido y la
 // vendedora que más ingresos generó
 
-
+const totalRender = () => {
+    console.log(`Las ventas mensuales son las siguientes:`)
+    console.table (monthlyRender(2019))
+    // console.log(`El componente mas vendido es ${componentefinal}`)
+    console.log(`Las ventas por sucursal fueron: `)
+    branchRender()
+}
+totalRender()
 
 //vendedora del mes
 //  const sellerOfMonth = (month, year) =>{
@@ -197,15 +235,13 @@ const sucur = "Centro"
 //              }
 //          })
 //      })
- 
 
 
-
-const sellerOfTheMonth = (year, month) => {
-    let sellers = []
-    local.sellers.forEach(employee => {
-        let sales = local.sales.filter( e => e.sellerName === employee)
-        let totalSold = monthlySales(month, year, sales)
-        sellers.push({ name:employee, total: totalSold})
-    })
-}
+// const sellerOfTheMonth = (year, month) => {
+//     let sellers = []
+//     local.sellers.forEach(employee => {
+//         let sales = local.sales.filter( e => e.sellerName === employee)
+//         let totalSold = monthlySales(month, year, sales)
+//         sellers.push({ name:employee, total: totalSold})
+//     })
+// }
