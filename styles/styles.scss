@@ -1,0 +1,139 @@
+@import "variables.scss";
+
+body {
+    font-family: $font0;
+    margin: 0;
+    color: $color0;
+    background-color: $color1;
+    header {
+        .header {
+            background: $url0;
+            background: center;
+            background-size: auto;
+            height: 20vh;
+            display: flex;
+            opacity: 0.7;
+            position: absolute;
+            width: 100%;
+        }
+        div {
+            display:flex;
+        }
+        h1 {
+            padding-left: 25px;
+            color:#f8f6f6a8;
+            font-family: $font0;
+            font-size: 75px;
+            position: relative;
+            text-align: center;
+            margin-top: 0;
+        }
+    }
+    .section2 {
+        color: $color2;
+        font-size: 16px;
+        margin: 24px;
+        font-family: $font0;
+        width: 100%;
+
+        #newSale {
+            margin: 16px;
+            background-color: $color5;
+            color: $color6;
+            width: 50%;
+            display:none;
+
+            p {
+                font-family: $font0;
+                font-size: 16px;
+                font-weight: bold;
+            }
+        }
+    }
+
+    h2 {
+        padding-left: 25PX;
+        color: $color0;
+        text-align: center;
+        font-size: 30px;
+        font-family: $font0;
+    }
+
+    table {
+        background-color: $color7;
+        font-family: $font0;
+        margin: 24px auto;
+        text-align: center;
+        width: 80%;
+
+        td {
+            border-right: 1px solid $color0;
+            border-left: 1px solid $color0;
+            text-align: center;
+            font-weight: normal;
+            margin-top: 20px;
+        }
+
+        .itemTd {
+            background-color: $color6;
+            font-weight: bold;
+            color: $white;
+        }
+    }
+
+    .report-detail {
+        background-color: $color8;
+        width: 1200px;
+        height: 200px;
+        margin: auto;
+        font-family: $font0;
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .buttom {
+        background: $url0;
+        background: center;
+        background-size: auto;
+        height: 10vh;
+        display: flex;
+        opacity: 0.7;
+        position: absolute;
+        margin-top: 35px;
+        width: 100%;
+    }
+
+    .report {
+        p {
+        margin-left: 25px;
+        font-weight: bold;
+        font-family: $font0;
+        color: $color0;
+        }
+    }
+
+.buttom1 {
+    border-top:1px solid $color4;
+    border-bottom: 2px solid $color5;
+    border-left: 1px solid $color4;
+    border-right:2px solid $color5;
+    &:hover {
+        border-bottom: 1px solid $color4;
+        border-top: 2px solid $color5;
+        border-right: 1px solid $color4;
+        border-left: 2px solid $color5;
+    }
+}
+
+a.buttom1 {
+    margin: 40px;
+    font-family: $font0;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 4px;
+    background-color: $color0;
+    color: $color1;
+    text-decoration: none;
+}
+}
+

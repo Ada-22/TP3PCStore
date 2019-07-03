@@ -1,11 +1,11 @@
 body {
-  font-family: "Anton", sans-serif;
-  margin: 0px;
+  font-family: arial;
+  margin: 0;
   color: #f3f7fa;
-  background-color: #2c091a;
+  background-color: #030303;
 }
 body header .header {
-  background: url("../images/div1.jpg");
+  background: url(../images/div1.jpg);
   background: center;
   background-size: auto;
   height: 20vh;
@@ -16,75 +16,48 @@ body header .header {
 }
 body header div {
   display: flex;
-  /*img {
-      height: 50px;
-      width: 50px;
-      margin-top: 35px;
-      margin-left: 20px;
-  }*/
 }
 body header h1 {
   padding-left: 25px;
   color: #f8f6f6a8;
-  font-family: "Anton", sans-serif;
+  font-family: arial;
   font-size: 75px;
   position: relative;
   text-align: center;
-  margin-top: 0px;
+  margin-top: 0;
 }
-
 body .section2 {
-  color: #c49db0;
+  color: #e5e2e4;
   font-size: 16px;
-  margin : 24px;
+  margin: 24px;
   font-family: arial;
   width: 100%;
- 
-
 }
- a.buttom1{
-    margin:40px;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
-    font-size: 16px; 
-    font-weight: bold; 
-    padding: 4px; 
-    background-color: #ffffcc; 
-    color: #2c091a; 
-    text-decoration: none; 
- } 
- .buttom1:link, 
- .buttom1:visited { 
-    border-top: 1px solid #cccccc; 
-    border-bottom: 2px solid #666666; 
-    border-left: 1px solid #cccccc; 
-    border-right: 2px solid #666666; 
- } 
- .buttom1:hover { 
-     border-bottom: 1px solid #cccccc; 
-    border-top: 2px solid #666666; 
-    border-right: 1px solid #cccccc; 
-    border-left: 2px solid #666666; 
- }
-  
+body .section2 #newSale {
+  margin: 16px;
+  background-color: #000000;
+  color: #363436;
+  width: 50%;
+  display: none;
+}
+body .section2 #newSale p {
+  font-family: arial;
+  font-size: 16px;
+  font-weight: bold;
+}
 body h2 {
   padding-left: 25PX;
   color: #f3f7fa;
   text-align: center;
   font-size: 30px;
   font-family: arial;
-  
-
-}
-body .section2 #newSale{
-  display: none;
 }
 body table {
-  background-color: hsla(246, 28%, 45%, 0.616);
+  background-color: rgba(16, 15, 19, 0.616);
   font-family: arial;
   margin: 24px auto;
   text-align: center;
   width: 80%;
-  
 }
 body table td {
   border-right: 1px solid #f3f7fa;
@@ -93,20 +66,13 @@ body table td {
   font-weight: normal;
   margin-top: 20px;
 }
-body table .itemTd{
-  background-color: rgb(73, 26, 94);
+body table .itemTd {
+  background-color: #363436;
   font-weight: bold;
-  color: white;
-
-}
-body .report p {
-  margin-left: 25px;
-  font-weight: bold;
-  font-family: arial;
-  color: #f3f7fa;
+  color: #FFFFFF;
 }
 body .report-detail {
-  background-color: hsla(271, 24%, 40%, 0.616);
+  background-color: rgba(58, 57, 59, 0.384);
   width: 1200px;
   height: 200px;
   margin: auto;
@@ -115,7 +81,7 @@ body .report-detail {
   text-align: center;
 }
 body .buttom {
-  background: url("../images/div1.jpg");
+  background: url(../images/div1.jpg);
   background: center;
   background-size: auto;
   height: 10vh;
@@ -123,5 +89,35 @@ body .buttom {
   opacity: 0.7;
   position: absolute;
   margin-top: 35px;
-  width:100%;
-   }
+  width: 100%;
+}
+body .report p {
+  margin-left: 25px;
+  font-weight: bold;
+  font-family: arial;
+  color: #f3f7fa;
+}
+body .buttom1 {
+  border-top: 1px solid #1a1919;
+  border-bottom: 2px solid #000000;
+  border-left: 1px solid #1a1919;
+  border-right: 2px solid #000000;
+}
+body .buttom1:hover {
+  border-bottom: 1px solid #1a1919;
+  border-top: 2px solid #000000;
+  border-right: 1px solid #1a1919;
+  border-left: 2px solid #000000;
+}
+body a.buttom1 {
+  margin: 40px;
+  font-family: arial;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 4px;
+  background-color: #f3f7fa;
+  color: #030303;
+  text-decoration: none;
+}
+
+/*# sourceMappingURL=styles.css.map */
