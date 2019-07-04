@@ -202,7 +202,8 @@ branchRender()
 const totalRender = () => {
     console.log(`Las ventas mensuales son las siguientes:`)
     console.table (monthlyRender(2019))
-    // console.log(`El componente mas vendido es ${componentefinal}`)
+    let componentefinal
+    mostSold()
     console.log(`Las ventas por sucursal fueron: `)
     branchRender()
 }
