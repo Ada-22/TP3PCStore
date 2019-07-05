@@ -144,6 +144,18 @@ const sucur = "Centro"
 //trabajando con una propiedad distinta. Entonces, ¿cómo harías para que ambas funciones reutilicen código y evitemos 
 //repetir?
 
+const totalSaleBranchSeller = name =>{
+    let totalSale = 0
+    local.sales.forEach(e =>{
+        if(e.sellerName === name || e.branch === name){
+        totalSale += machinePrice(e.components)
+        }
+    })
+    return totalSale
+}
+const nameSr = "Ada"
+const nameB = "Centro"
+console.log(`Las ventas totales de ${nameB} fueron: ARS ${totalSaleBranchSeller(nameB)}`)
 
 
 //10)Crear la función sucursalDelMes(mes, anio), que se le pasa dos parámetros numéricos, (mes, anio) y devuelve el 
