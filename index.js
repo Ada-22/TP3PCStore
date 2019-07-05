@@ -49,7 +49,7 @@ let shop = {
 const CreateTable = () => {
     let container = document.getElementById('record')
     container.innerHTML = ""
-    shop.salesList.map(function(e){
+    shop.salesList.map(e => {
     let trSale = document.createElement('tr')
     let tdDate = document.createElement('td')
     tdDate.innerText =`${e.date.getMonth() + 1}/${e.date.getFullYear()}`
@@ -83,7 +83,7 @@ const newSale = () => {
     let sale =  { date:"", nameSeller: "", components: [], branch: ""}
     let components = document.getElementById('components')
     let selectedOptions = Array.from(components.selectedOptions)
-    sale.components = selectedOptions.map(function(e){
+    sale.components = selectedOptions.map(e => {
         return e.value
     })
     .components = selectedOptions.map(e => {
@@ -151,6 +151,8 @@ console.log('La mejor vendedora fue: ' + sellerOfTheMonth(1, 2019))
 
 
 
+
+
 // 4) ventasMes(mes, anio): Obtener las ventas de un mes. El mes es un número entero que va desde el 1 (enero) hasta el 
 //12 (diciembre).
 const monthlySales = (year, month, data = shop.salesList) => {
@@ -181,8 +183,11 @@ const saleSeller = name => {
     return sellerRevenue
 }
 
-const nameS = "Ada"
+let nameS = "Ada"
+
+
 console.log(`Las ventas hechas por ${nameS} fueron de ARS ${saleSeller(nameS)}`)
+
 
 //6) componenteMasVendido(): Devuelve el nombre del componente que más ventas tuvo historicamente. El dato de la cantidad
 // de ventas es el que indica la función cantidadVentasComponente
@@ -230,7 +235,7 @@ console.log(thereWereSales(5,2019))
 }
 const sucur = "Centro"
 console.log(`Las ventas totales de la sucursal ${sucur} fueron de ARS ${saleBranch(sucur)} `)
-//console.log(saleBranch("Centro"))
+
 
 //9) Las funciones ventasSucursal y ventasVendedora tienen mucho código en común, ya que es la misma funcionalidad pero 
 //trabajando con una propiedad distinta. Entonces, ¿cómo harías para que ambas funciones reutilicen código y evitemos 
@@ -301,9 +306,16 @@ branchRender()
 //11.c) render(): Tiene que mostrar la unión de los dos reportes anteriores, cual fue el producto más vendido y la
 // vendedora que más ingresos generó
 
+
+
 const totalRender = () => {
-  
+    console.log(`Las ventas mensuales son las siguientes:`)
+    console.table (monthlyRender(2019))
+    mostSold()
+    console.log(`Las ventas por sucursal fueron: `)
+    branchRender()
+    console.log(`La mejor vendedora fue: `)
+    sellerOfTheMonth()
 }
 totalRender()
-
 
