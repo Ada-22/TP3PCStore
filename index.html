@@ -31,64 +31,43 @@
                     <option value="RAM Quinston">RAM Quinston</option>
                     <option value="RAM Quinston Fury">RAM Quinston Fury</option>
                 </select>
-
-            <p class="itemNewSale">seleccione una vendedora:
-                <select name="sellers" id="sellers">
-                    <option value="Ada">Ada</option>
-                    <option value="Grace">Grace</option>
-                    <option value="Hedy">Hedy</option>
-                    <option value="Sheryl">Sheryl</option>
-                </select>
-            </p> 
-            <p class="itemNewSale">seleccione una sucursal:
-                <select name="branch" id="branch">
-                    <option value="Centro">Centro</option>
-                    <option value="Caballito">Caballito</option>
-                </select>
-            </p>
-            <div class= "shoppingCart">
-                    <ul id= "listShopping">
-    
-                    </ul>
-                    <button onclick="addShoppingCart()">Agregar a carrito</button>
+                    <p class="itemNewSale">seleccione una vendedora:
+                    <select name="sellers" id="sellers">
+                        <option value="Ada">Ada</option>
+                        <option value="Grace">Grace</option>
+                        <option value="Hedy">Hedy</option>
+                        <option value="Sheryl">Sheryl</option>
+                    </select>
+                    </p> 
+                    <p class="itemNewSale">seleccione una sucursal:
+                        <select name="branch" id="branch">
+                        <option value="Centro">Centro</option>
+                        <option value="Caballito">Caballito</option>
+                        </select>
+                    </p>
+                    <input type="submit" value="Enviar" id="sent" onclick ="newSale()">
                 </div>
-            
-            <input type="submit" value="Enviar" id="sent" onclick ="newSale()">
-
-
-            
-            </div>
-            
-        <table>
-            <thead>
-                <tr>
-                    <td class= "itemTd">Fecha (mes /año)</td>
-                    <td class= "itemTd">Vendedora</td>
-                    <td class= "itemTd">Componentes</td>
-                    <td class= "itemTd">Sucursal</td>
-                    <td class= "itemTd">Precio Total</td>
-                    
-
-
-
-                    </tr>
-                </thead>
-            <tbody id="record">
-            </tbody>
-        </table>
-    </section>
-    
-
+                <table>
+                    <thead>
+                        <tr>
+                            <td class= "itemTd">Fecha (mes /año)</td>
+                            <td class= "itemTd">Vendedora</td>
+                            <td class= "itemTd">Componentes</td>
+                            <td class= "itemTd">Sucursal</td>
+                            <td class= "itemTd">Precio Total</td>
+                        </tr>
+                    </thead>
+                    <tbody id="record">
+                    </tbody>
+                 </table>
+        </section>
     <div class="report"id="report">
         <p id="report1">Reporte: </p>
     </div>
-
-
     <div class="report-detail" id="report-detail">
         <p id="repSeller">La vendedora que más ingresos genero fue: </p>
         <p id="repProduct">El producto que más se vendio fue:</p>
     </div>
-
     <footer class="buttom"><img src="images/div1.jpg"></footer>   
 </body>
 </html>
