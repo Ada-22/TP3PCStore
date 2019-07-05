@@ -41,11 +41,7 @@ let shop = {
         {component: "RAM Quinston Fury", price: 230},
 
     ]
-};
-
-let price = []
-let branch = []
-let sellers = []
+}
 
 
 
@@ -53,106 +49,57 @@ let sellers = []
 const CreateTable = () => {
     let container = document.getElementById('record')
     container.innerHTML = ""
-
-    shop.salesList.map(function(e){
-        //console.log(e)
+    shop.salesList.map(e => {
     let trSale = document.createElement('tr')
-        //console.log(trSale)
     let tdDate = document.createElement('td')
-        
     tdDate.innerText =`${e.date.getMonth() + 1}/${e.date.getFullYear()}`
     trSale.appendChild(tdDate)
-    //console.log(tdDate)
     let tdSeller = document.createElement('td')
     tdSeller.innerText = e.nameSeller
     trSale.appendChild(tdSeller)
-    //console.log(tdSeller)
     let tdComponents = document.createElement('td')
     tdComponents.innerText = e.components
     trSale.appendChild(tdComponents)
-    //console.log(e.components)
-    
     let tdBranch = document.createElement('td')
     tdBranch.innerText = e.branch
     trSale.appendChild(tdBranch)
-    //totalPrice(e.components)
-
     let tdTotalPrice = document.createElement('td')
-    tdTotalPrice.innerText = totalPrice(e.components)
+    tdTotalPrice.innerText = machinePrice(e.components)
     trSale.appendChild(tdTotalPrice)
-    //console.log(tdBranch)
     container.appendChild(trSale)
     
     })
 
-    
-    
-    
 }
-   
-//const allComponents = shop.priceList.map(({component}) => component)
+
 const showOptions = () => {
     let divShow = document.getElementById('newSale')
-    //console.log(divShow)
-    
     divShow.style.display = 'block'
-    
-    
     
 }
 
 const newSale = () => {
     let sentItem = document.getElementById('sent')
-     //console.log(sentItem)
     let sale =  { date:"", nameSeller: "", components: [], branch: ""}
     let components = document.getElementById('components')
     let selectedOptions = Array.from(components.selectedOptions)
-    sale.components = selectedOptions.map(function(e){
+    sale.components = selectedOptions.map(e => {
+        return e.value
+    })
+    .components = selectedOptions.map(e => {
         return e.value
     })
     let today = new Date
     sale.date = new Date (today.getFullYear(),today.getMonth(),today.getDate())
-    //console.log(sale.date)
     let nameSeller = document.getElementById('sellers')
     sale.nameSeller = nameSeller.value
-    //console.log(sale.nameSeller)
     let branch = document.getElementById('branch')
     sale.branch = branch.value
     shop.salesList.push(sale)
-   // debugger;
-    //console.log(sale)
     CreateTable()
 
 }
 
-//const addShoppingCart = () => {
-   // let shopping = document.getElementById('listShopping')
-   // console.log(shopping)
-   // let components = document.getElementById('components')
-   // let selectedOptions = Array.from(components.selectedOptions)
-   // selectedOptions.map(function(e){
-        //console.log(e)
-    //    let item = document.createElement('li')
-     //   item.innerText=e.value
-    //    shopping.appendChild(item)
-   // })
-//}
-
-      const totalPrice = (components) => {
-        let sumPrice = 0
-          components.map(function(comp){
-            shop.priceList.map(function(i){
-                
-                if(comp === i.component){
-                    sumPrice += i.price
-                }
-                
-            })
-        })
-    
-        return sumPrice
-}  
-            
 //1) precioMaquina(componentes): recibe un array de componentes y devuelve el precio de la máquina que se puede armar con
 // esos componentes, que es la suma de los precios de cada componente incluido.
 const machinePrice = sale => {
@@ -189,12 +136,26 @@ console.log(`El compononte ${nameCom} fue vendido ${saleQuantity(nameCom)} veces
 // venta es el que indica la función precioMaquina. El mes es un número entero que va desde el 1 (enero) hasta el 12 
 //(diciembre).
 
+const sellerOfTheMonth = (month, year) => {
+    let fileteredSales = shop.salesList.filter(sale => sale.date.getMonth() + 1 === month && sale.date.getFullYear() === year)
+    return shop.sellers.map(nameSeller => ({
+        nameSeller: nameSeller,
+        totalAmount: fileteredSales.reduce((accum, curr) => (nameSeller === curr.nameSeller) ? accum + machinePrice(curr.components) : accum, 0)
+    }))
+    .reduce((accum, curr) => (curr.totalAmount > accum.totalAmount ? curr : accum), {nameSeller: "", totalAmount: 0 })
+    .nameSeller
+    }
+    
+    
+console.log('La mejor vendedora fue: ' + sellerOfTheMonth(1, 2019))
+
+
 
 
 
 // 4) ventasMes(mes, anio): Obtener las ventas de un mes. El mes es un número entero que va desde el 1 (enero) hasta el 
 //12 (diciembre).
-const monthlySales = (month, year, data = shop.salesList) => {
+const monthlySales = (year, month, data = shop.salesList) => {
     let eachSale = []
     data.forEach(({date, components}) =>{
         if (date.getFullYear()===year && date.getMonth() === month-1) {
@@ -203,12 +164,15 @@ const monthlySales = (month, year, data = shop.salesList) => {
     })
     const monthlyMoney = machinePrice(eachSale)
     return monthlyMoney
+
  }
 
  const mes = 1
- const anno =2019
+ const año =2019
  //console.log(monthlySales(1,2019))
- console.log(`Las ventas para el mes ${mes} del año ${anno} fueron de ARS ${monthlySales(mes, anno)}`)
+ console.log(`Las ventas para el mes ${mes} del año ${año} fueron de ARS ${monthlySales(mes, año)}`)
+
+
 
 //5) ventasVendedora(nombre): Obtener las ventas totales realizadas por una vendedora sin límite de fecha.
 const saleSeller = name => {
@@ -219,9 +183,11 @@ const saleSeller = name => {
     return sellerRevenue
 }
 
-const nameS = "Ada"
+let nameS = "Ada"
+
+
 console.log(`Las ventas hechas por ${nameS} fueron de ARS ${saleSeller(nameS)}`)
-//console.log(saleSeller("Ada"))
+
 
 //6) componenteMasVendido(): Devuelve el nombre del componente que más ventas tuvo historicamente. El dato de la cantidad
 // de ventas es el que indica la función cantidadVentasComponente
@@ -249,9 +215,9 @@ mostSold()
  const thereWereSales = (month,year) => {
     let monthSales = monthlySales(month,year)
     if (monthSales === 0){
-        return false 
+        return (`No hubo ventas en el mes consultado `) 
     }else {
-        return true 
+        return (`si hubo ventas en el mes consultado `) 
     }
 }
 
@@ -269,7 +235,7 @@ console.log(thereWereSales(5,2019))
 }
 const sucur = "Centro"
 console.log(`Las ventas totales de la sucursal ${sucur} fueron de ARS ${saleBranch(sucur)} `)
-//console.log(saleBranch("Centro"))
+
 
 //9) Las funciones ventasSucursal y ventasVendedora tienen mucho código en común, ya que es la misma funcionalidad pero 
 //trabajando con una propiedad distinta. Entonces, ¿cómo harías para que ambas funciones reutilicen código y evitemos 
@@ -281,7 +247,74 @@ console.log(`Las ventas totales de la sucursal ${sucur} fueron de ARS ${saleBran
 //nombre de la sucursal que más vendió en plata en el mes. No cantidad de ventas, sino importe total de las ventas. El 
 //importe de una venta es el que indica la función precioMaquina. El mes es un número entero que va desde el 1 (enero) 
 //hasta el 12 (diciembre).
+const branchOfTheMonth = (month, year) => {
+    let countbranch = shop.salesList.filter(sale => sale.date.getMonth() + 1 === month && sale.date.getFullYear() === year)
+    return shop.branch.map(branch => ({
+      branch: branch,
+      greaterAmount: countbranch.reduce((accum, curr) =>(branch === curr.branch) ? accum + machinePrice(curr.components) : accum, 0)
+     }))
+     .reduce((accum, curr) => (curr.greaterAmount > accum.greaterAmount ? curr : accum), {branch: "", greaterAmount: 0})
+     .branch
+ }
+ 
+
+ console.log('la mejor sucursal fue: ' + branchOfTheMonth(1, 2019))
+
+ //11) Para tener una mejor muestra de como está resultando el local, queremos desarrollar un reporte que nos muestre las 
+//ventas por sucursal y por mes. Para esto, necesitamos crear las siguientes funciones:
+
+
+//11.a) renderPorMes(): Muestra una lista ordenada del importe total vendido por cada mes/año
+
+const monthlyRender = year => {
+    let salesPerMonth = [
+        {month:"enero", sales:undefined},
+        {month:"febrero", sales:undefined},
+        {month:"marzo", sales:undefined},
+        {month:"abril", sales:undefined},
+        {month:"mayo", sales:undefined},
+        {month:"junio", sales:undefined},
+        {month:"julio", sales:undefined},
+        {month:"agosto", sales:undefined},
+        {month:"septiembre", sales:undefined},
+        {month:"octubre", sales:undefined},
+        {month:"noviembre", sales:undefined},
+        {month:"diciembre", sales:undefined}, 
+    ]
+    salesPerMonth.map((eachMonth,i)=>{
+        eachMonth.sales = (monthlySales(year,i+1))
+    })
+    return salesPerMonth
+}
+console.log(`Las ventas mensuales durante el año 2019 fueron: `)
+console.table (monthlyRender(2019))
+
+//11.b) renderPorSucursal(): Muestra una lista del importe total vendido por cada sucursal
+
+const branchRender = () =>{
+    let saleBranches 
+    shop.branch.forEach(e => {
+        saleBranches = saleBranch(e)
+        console.log(`Las ventas totales en la sucursal de ${e} son: $${saleBranches}`)
+    })
+    return saleBranches
+}
+console.log(`Las ventas por sucursal fueron: `)
+branchRender()
+
+
+//11.c) render(): Tiene que mostrar la unión de los dos reportes anteriores, cual fue el producto más vendido y la
+// vendedora que más ingresos generó
 
 
 
-
+const totalRender = () => {
+    console.log(`Las ventas mensuales son las siguientes:`)
+    console.table (monthlyRender(2019))
+    mostSold()
+    console.log(`Las ventas por sucursal fueron: `)
+    branchRender()
+    console.log(`La mejor vendedora fue: `)
+    sellerOfTheMonth()
+}
+totalRender()
