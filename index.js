@@ -100,8 +100,7 @@ const newSale = () => {
 
 }
 
-//1) precioMaquina(componentes): recibe un array de componentes y devuelve el precio de la máquina que se puede armar con
-// esos componentes, que es la suma de los precios de cada componente incluido.
+//1) precioMaquina(componentes)
 const machinePrice = sale => {
     let machinePrice = 0
     sale.forEach ( e => {
@@ -114,9 +113,7 @@ const machinePrice = sale => {
 const machine = ["Monitor ASC 543", "Motherboard MZI"]
 console.log(`La venta de ${machine} tiene un costo de ARS ${machinePrice(machine)}`)
 
-//2) cantidadVentasComponente(componente): recibe un componente y devuelve la cantidad de veces que fue vendido, o sea que
-// formó parte de una máquina que se vendió. La lista de ventas no se pasa por parámetro, se asume que está identificada
-// por la variable ventas.
+//2) cantidadVentasComponente(componente)
 const saleQuantity = (sale) => {
     let saleCount = 0
     shop.salesList.forEach(e => {
@@ -131,10 +128,7 @@ const saleQuantity = (sale) => {
 const nameCom = "Monitor ASC 543"
 console.log(`El compononte ${nameCom} fue vendido ${saleQuantity(nameCom)} veces`)
 
-// 3) vendedoraDelMes(mes, anio), se le pasa dos parámetros numéricos, (mes, anio) y devuelve el nombre de la vendedora
-// que más vendió en plata en el mes. O sea no cantidad de ventas, sino importe total de las ventas. El importe de una
-// venta es el que indica la función precioMaquina. El mes es un número entero que va desde el 1 (enero) hasta el 12 
-//(diciembre).
+// 3) vendedoraDelMes(mes, anio)
 
 const sellerOfTheMonth = (month, year) => {
     let fileteredSales = shop.salesList.filter(sale => sale.date.getMonth() + 1 === month && sale.date.getFullYear() === year)
@@ -149,12 +143,7 @@ const sellerOfTheMonth = (month, year) => {
     
 console.log('La mejor vendedora fue: ' + sellerOfTheMonth(1, 2019))
 
-
-
-
-
-// 4) ventasMes(mes, anio): Obtener las ventas de un mes. El mes es un número entero que va desde el 1 (enero) hasta el 
-//12 (diciembre).
+// 4) ventasMes(mes, anio)
 const monthlySales = (year, month, data = shop.salesList) => {
     let eachSale = []
     data.forEach(({date, components}) =>{
@@ -172,8 +161,6 @@ const monthlySales = (year, month, data = shop.salesList) => {
  //console.log(monthlySales(1,2019))
  console.log(`Las ventas para el mes ${mes} del año ${año} fueron de ARS ${monthlySales(mes, año)}`)
 
-
-
 //5) ventasVendedora(nombre): Obtener las ventas totales realizadas por una vendedora sin límite de fecha.
 const saleSeller = name => {
     let salesSeller = shop.salesList.filter(({nameSeller})=> nameSeller === name)
@@ -189,8 +176,7 @@ let nameS = "Ada"
 console.log(`Las ventas hechas por ${nameS} fueron de ARS ${saleSeller(nameS)}`)
 
 
-//6) componenteMasVendido(): Devuelve el nombre del componente que más ventas tuvo historicamente. El dato de la cantidad
-// de ventas es el que indica la función cantidadVentasComponente
+//6) componenteMasVendido(): Devuelve el nombre del componente que más ventas tuvo historicamente. 
 const mostSold = () =>{
     let componentSold = []
     shop.priceList.map(({component}) => {
@@ -240,13 +226,23 @@ console.log(`Las ventas totales de la sucursal ${sucur} fueron de ARS ${saleBran
 //9) Las funciones ventasSucursal y ventasVendedora tienen mucho código en común, ya que es la misma funcionalidad pero 
 //trabajando con una propiedad distinta. Entonces, ¿cómo harías para que ambas funciones reutilicen código y evitemos 
 //repetir?
+const totalSaleBranchSeller = name =>{
+    let totalSale = 0
+shop.salesList.forEach(e =>{
+        if(e.nameSeller === name || e.branch === name){
+        totalSale += machinePrice(e.components)
+        }
+    })
+    return totalSale
+}
+const nameSr = "Ada"
+const nameB = "Centro"
+console.log(`Las ventas totales de ${nameB} fueron: ARS ${totalSaleBranchSeller(nameB)}`)
+
+//Asi puedo reutilizar el codigo eligiendo la const que deseo ver
 
 
-
-//10)Crear la función sucursalDelMes(mes, anio), que se le pasa dos parámetros numéricos, (mes, anio) y devuelve el 
-//nombre de la sucursal que más vendió en plata en el mes. No cantidad de ventas, sino importe total de las ventas. El 
-//importe de una venta es el que indica la función precioMaquina. El mes es un número entero que va desde el 1 (enero) 
-//hasta el 12 (diciembre).
+//10) función sucursalDelMes(mes, anio)
 const branchOfTheMonth = (month, year) => {
     let countbranch = shop.salesList.filter(sale => sale.date.getMonth() + 1 === month && sale.date.getFullYear() === year)
     return shop.branch.map(branch => ({
@@ -306,15 +302,39 @@ branchRender()
 //11.c) render(): Tiene que mostrar la unión de los dos reportes anteriores, cual fue el producto más vendido y la
 // vendedora que más ingresos generó
 
+// vendedora que generó más ingresos
+const theBestSeller = () =>{
+    let maxCount = 0
+    let bestSeller = ''
+    shop.sellers.map(seller =>{
+        let count = 0
+      shop.salesList.map(e=>{
+        if(e.nameSeller === seller){
+          count = count + machinePrice(e.components)
+        }
+      })
+      if(count > maxCount){
+        maxCount = count
+        bestSeller = seller
+      }
+    })
+    
+    //return bestSeller
+    console.log(bestSeller)
+  }
 
-
-const totalRender = () => {
+  const totalRender = () => {
     console.log(`Las ventas mensuales son las siguientes:`)
     console.table (monthlyRender(2019))
     mostSold()
     console.log(`Las ventas por sucursal fueron: `)
     branchRender()
     console.log(`La mejor vendedora fue: `)
-    sellerOfTheMonth()
+    theBestSeller()
 }
 totalRender()
+
+
+  
+
+    
