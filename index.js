@@ -322,17 +322,20 @@ const theBestSeller = () =>{
   }
   const createTableRender = () => {
     let content = document.getElementById("table")
-    console.log(content)
+    //console.log(content)
     content.innerHTML = ""
     monthlyRender(2019).forEach(e =>{
     let trRender = document.createElement("tr")
     let tdMonth = document.createElement("td")
-    tdMonth.innerText = (`Mes:`+ e.month)
+    tdMonth.innerText = (`Mes:`+ " "+ e.month)
     trRender.appendChild(tdMonth)
-    let tdSales = document.createElement("td")
-    tdSales = (`total:`+ e.sales)
-    trRender.appendChild(tdSales)
+    let tdSale = document.createElement("td")
+    tdSale.innerText = (`total:`+ " " + e.sales)
+    console.log(tdSale)
+    trRender.appendChild(tdSale)
     content.appendChild(trRender)
+    content.style.width = "100px"
+    content.style.margin = "0 auto"
 })
  }
 
@@ -343,14 +346,18 @@ const theBestSeller = () =>{
     reportRender.innerText = (`La mejor vendedora fue: `+ theBestSeller())
     report.appendChild(reportRender)
     let repRenComp = document.createElement("p")
-    repRenComp.innerText = (`El mejor componente fue: `+ mostSold())
+    repRenComp.innerText = (`El componente mas vendido fue: `+ mostSold())
     report.appendChild(repRenComp)
     let reportBranch = document.createElement("p")
     reportBranch.innerText = (`Las ventas por sucursal fueron: `+ branchRender() )
     report.appendChild(reportBranch)
     let description = document.createElement("p")
-    description.innerText = (`Las ventas mensuales son las siguientes:`)
+    description.innerText = (`Las ventas mensuales estan en la siguiente tabla:`)
     report.appendChild(description)
+    report.style.fontSize = " 16px"
+    report.style.padding = "8px"
+    report.style.height= " "
+    
 
     }
 
