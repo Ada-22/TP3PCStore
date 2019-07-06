@@ -43,10 +43,7 @@ let shop = {
     ]
 }
 
-
-
-
-const CreateTable = () => {
+const createTable = () => {
     let container = document.getElementById('record')
     container.innerHTML = ""
     shop.salesList.map(e => {
@@ -67,7 +64,7 @@ const CreateTable = () => {
     tdTotalPrice.innerText = machinePrice(e.components)
     trSale.appendChild(tdTotalPrice)
     container.appendChild(trSale)
-    totalRender()
+    
     
     })
 
@@ -192,7 +189,7 @@ const mostSold = () =>{
     }) 
 
     console.log(`El componente mas vendido es ${mostSoldComponent}`)
-    //console.log(componentefinal)
+    return mostSoldComponent
 }
 
 mostSold()
@@ -321,27 +318,50 @@ const theBestSeller = () =>{
     })
     
     return bestSeller
-    // console.log(bestSeller)
+    
   }
+  const createTableRender = () => {
+    let content = document.getElementById("table")
+    console.log(content)
+    content.innerHTML = ""
+    monthlyRender(2019).forEach(e =>{
+    let trRender = document.createElement("tr")
+    let tdMonth = document.createElement("td")
+    tdMonth.innerText = (`Mes:`+ e.month)
+    trRender.appendChild(tdMonth)
+    let tdSales = document.createElement("td")
+    tdSales = (`total:`+ e.sales)
+    trRender.appendChild(tdSales)
+    content.appendChild(trRender)
+})
+ }
 
-  const totalRender = () => {
+    const totalRender = () => {
     let report = document.getElementById("report")
-    report.innerHTML = ""
+    report.innerHTML = " "
     let reportRender = document.createElement("p")
     reportRender.innerText = (`La mejor vendedora fue: `+ theBestSeller())
-    
-    
     report.appendChild(reportRender)
-    console.log(report)
-    console.log(`Las ventas mensuales son las siguientes:`)
-    // console.table (monthlyRender(2019))
-    mostSold()
-    console.log(`Las ventas por sucursal fueron: `)
-    branchRender()
-    console.log(`La mejor vendedora fue: `)
-    theBestSeller()
-}
-totalRender()
+    let repRenComp = document.createElement("p")
+    repRenComp.innerText = (`El mejor componente fue: `+ mostSold())
+    report.appendChild(repRenComp)
+    let reportBranch = document.createElement("p")
+    reportBranch.innerText = (`Las ventas por sucursal fueron: `+ branchRender() )
+    report.appendChild(reportBranch)
+    let description = document.createElement("p")
+    description.innerText = (`Las ventas mensuales son las siguientes:`)
+    report.appendChild(description)
+
+    }
+
+     const play = () => {
+       createTable()
+       totalRender()
+       createTableRender()
+    }
+ 
+
+
 
 
   

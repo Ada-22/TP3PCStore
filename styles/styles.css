@@ -74,12 +74,12 @@ body table .itemTd {
 body .report-detail {
   background-color: rgba(58, 57, 59, 0.384);
   width: 1200px;
-  height: 200px;
   margin: auto;
   font-family: arial;
   font-size: 18px;
   text-align: center;
 }
+
 body .buttom {
   background: url(../images/div1.jpg);
   background: center;
