@@ -67,6 +67,7 @@ const CreateTable = () => {
     tdTotalPrice.innerText = machinePrice(e.components)
     trSale.appendChild(tdTotalPrice)
     container.appendChild(trSale)
+    totalRender()
     
     })
 
@@ -319,13 +320,21 @@ const theBestSeller = () =>{
       }
     })
     
-    //return bestSeller
-    console.log(bestSeller)
+    return bestSeller
+    // console.log(bestSeller)
   }
 
   const totalRender = () => {
+    let report = document.getElementById("report")
+    report.innerHTML = ""
+    let reportRender = document.createElement("p")
+    reportRender.innerText = (`La mejor vendedora fue: `+ theBestSeller())
+    
+    
+    report.appendChild(reportRender)
+    console.log(report)
     console.log(`Las ventas mensuales son las siguientes:`)
-    console.table (monthlyRender(2019))
+    // console.table (monthlyRender(2019))
     mostSold()
     console.log(`Las ventas por sucursal fueron: `)
     branchRender()
