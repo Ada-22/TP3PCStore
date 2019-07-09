@@ -73,7 +73,7 @@ body table .itemTd {
 }
 body .report-detail {
   background-color: rgba(58, 57, 59, 0.384);
-  width: 1200px;
+  width: 80%;
   height: 200px;
   margin: auto;
   font-family: arial;
