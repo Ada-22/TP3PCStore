@@ -295,7 +295,7 @@ const monthlyRender = year => {
         {month:"diciembre", sales:undefined}, 
     ]
     salesPerMonth.map((eachMonth,i)=>{
-        eachMonth.sales = (monthlySales(year,i+1))
+        eachMonth.sales = (monthlySales(i+1,year))
     })
     return salesPerMonth
 }
