@@ -113,9 +113,8 @@ const deleteSale = (sale) =>{
     let node = document.getElementById("delete")
     shop.salesList.pop(sale)
     createTable()
-    totalRender()
     createTableRender()
-
+    totalRender()
 }
 
 //1) precioMaquina(componentes)
@@ -162,7 +161,7 @@ const sellerOfTheMonth = (month, year) => {
 
 
 // 4) ventasMes(mes, anio)
-const monthlySales = (month, year, data = shop.salesList) => {
+const monthlySales = (year, month, data = shop.salesList) => {
     let eachSale = []
     data.forEach(({date, components}) =>{
         if (date.getFullYear()===year && date.getMonth() === month-1) {
