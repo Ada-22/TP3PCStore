@@ -94,7 +94,7 @@ const newSale = () => {
     let branch = document.getElementById('branch')
     sale.branch = branch.value
     shop.salesList.push(sale)
-    CreateTable()
+    createTable()
 
 }
 
@@ -327,11 +327,10 @@ const theBestSeller = () =>{
     monthlyRender(2019).forEach(e =>{
     let trRender = document.createElement("tr")
     let tdMonth = document.createElement("td")
-    tdMonth.innerText = (`Mes:`+ " "+ e.month)
+    tdMonth.innerText = `Mes: ${e.month}`
     trRender.appendChild(tdMonth)
     let tdSale = document.createElement("td")
-    tdSale.innerText = (`total:`+ " " + e.sales)
-    console.log(tdSale)
+    tdSale.innerText = `Total: ${e.sales}`
     trRender.appendChild(tdSale)
     content.appendChild(trRender)
     content.style.width = "100px"
@@ -341,22 +340,27 @@ const theBestSeller = () =>{
 
     const totalRender = () => {
     let report = document.getElementById("report")
-    report.innerHTML = " "
-    let reportRender = document.createElement("p")
-    reportRender.innerText = (`La mejor vendedora fue: `+ theBestSeller())
-    report.appendChild(reportRender)
     let repRenComp = document.createElement("p")
-    repRenComp.innerText = (`El componente mas vendido fue: `+ mostSold())
+    repRenComp.innerText = ` El componente mas vendido fue : ${ mostSold()}`
     report.appendChild(repRenComp)
-    let reportBranch = document.createElement("p")
-    reportBranch.innerText = (`Las ventas por sucursal fueron: `+ branchRender() )
+    let reportSeller = document.createElement("p")
+    reportSeller.innerText =`La mejor vendedora fue ${theBestSeller()}`
+    report.appendChild(reportSeller)
+    let reportBranch = document.createElement("ul")
+    reportBranch.innerText = `Las ventas por sucursal fueron :`
+    shop.branch.forEach(sucursal=> {
+    li = document.createElement("li")
+    let branch = sucursal
+    li.innerText = ` ${branch} un total: $ ${saleBranch(sucursal)} `
+    reportBranch.appendChild(li)
     report.appendChild(reportBranch)
+     })
     let description = document.createElement("p")
-    description.innerText = (`Las ventas mensuales estan en la siguiente tabla:`)
+    description.innerText = `Las ventas mensuales estan en la siguiente tabla:`
     report.appendChild(description)
-    report.style.fontSize = " 16px"
+    report.style.fontSize = "16px"
     report.style.padding = "8px"
-    report.style.height= " "
+
     
 
     }
