@@ -18,7 +18,7 @@
             <h2>Control de ventas</h2>
             <a href="#"class="buttom1"id ="buttom1"onclick ="showOptions()">Nueva venta</a>
             <div id="newSale" class="newSale">
-                <p class="itemNewSale">seleccione un componente:</p>
+                <p class="itemNewSale">Elija un componente (o varios con la tecla 'ctrl'):</p>
                 <select name="components" id="components" multiple>
                     <option value="Monitor GPRS 3000">Monitor GPRS 3000</option>
                     <option value="Motherboard ASUS 1500">Motherboard ASUS 1500</option>
@@ -30,7 +30,7 @@
                     <option value="RAM Quinston">RAM Quinston</option>
                     <option value="RAM Quinston Fury">RAM Quinston Fury</option>
                 </select>
-                    <p class="itemNewSale">seleccione una vendedora:
+                    <p class="itemNewSale">Elija una vendedora:
                     <select name="sellers" id="sellers">
                         <option value="Ada">Ada</option>
                         <option value="Grace">Grace</option>
@@ -38,14 +38,14 @@
                         <option value="Sheryl">Sheryl</option>
                     </select>
                     </p> 
-                    <p class="itemNewSale">seleccione una sucursal:
+                    <p class="itemNewSale">Elija una sucursal:
                         <select name="branch" id="branch">
                         <option value="Centro">Centro</option>
                         <option value="Caballito">Caballito</option>
                         </select>
                     </p>
-                    <input type="submit" value="Enviar" id="sent" onclick ="newSale()" class="buttom1">
-                </div>
+                    <input type="submit" value="Confirmar Venta" id="sent" onclick ="newSale()" class="buttom1">
+                    </div>
                 <table>
                     <thead>
                         <tr>
@@ -59,6 +59,7 @@
                     <tbody id="record">
                     </tbody>
                  </table>
+                 <input type="delete" value="Cancelar ultima Venta" id="delete" onclick ="deleteSale()" class="buttom1">
         </section>
         <p id="report1">Reporte: </p>
             <div id ="report"class="report-detail" >

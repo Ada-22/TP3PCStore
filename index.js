@@ -76,8 +76,17 @@ const showOptions = () => {
     
 }
 
+const deleteOptions = ()=> {
+    let divShow = document.getElementById("newSale")
+    divShow.style.display = "none"
+    divShow.style.transition ="2"
+
+    
+}
+
 const newSale = () => {
     let sentItem = document.getElementById("sent")
+        sentItem = deleteOptions()
     let sale =  { date:"", nameSeller: "", components: [], branch: ""}
     let components = document.getElementById("components")
     let selectedOptions = Array.from(components.selectedOptions)
@@ -95,7 +104,15 @@ const newSale = () => {
     sale.branch = branch.value
     shop.salesList.push(sale)
     createTable()
+    createTableRender()
+    totalRender()
 
+}
+
+const deleteSale = (sale) =>{
+    let node = document.getElementById("delete")
+    shop.salesList.pop(sale)
+    createTable()
 }
 
 //1) precioMaquina(componentes)
@@ -340,11 +357,12 @@ const theBestSeller = () =>{
 
     const totalRender = () => {
     let report = document.getElementById("report")
+    report.innerText = " "
     let repRenComp = document.createElement("p")
     repRenComp.innerText = ` El componente mas vendido fue : ${ mostSold()}`
     report.appendChild(repRenComp)
     let reportSeller = document.createElement("p")
-    reportSeller.innerText =`La mejor vendedora fue ${theBestSeller()}`
+    reportSeller.innerText =`La mejor vendedora fue: ${theBestSeller()}`
     report.appendChild(reportSeller)
     let reportBranch = document.createElement("ul")
     reportBranch.innerText = `Las ventas por sucursal fueron :`
