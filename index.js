@@ -113,6 +113,9 @@ const deleteSale = (sale) =>{
     let node = document.getElementById("delete")
     shop.salesList.pop(sale)
     createTable()
+    totalRender()
+    createTableRender()
+
 }
 
 //1) precioMaquina(componentes)
