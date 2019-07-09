@@ -44,23 +44,23 @@ let shop = {
 }
 
 const createTable = () => {
-    let container = document.getElementById('record')
+    let container = document.getElementById("record")
     container.innerHTML = ""
-    shop.salesList.map(e => {
-    let trSale = document.createElement('tr')
-    let tdDate = document.createElement('td')
+    shop.salesList.forEach(e => {
+    let trSale = document.createElement("tr")
+    let tdDate = document.createElement("td")
     tdDate.innerText =`${e.date.getMonth() + 1}/${e.date.getFullYear()}`
     trSale.appendChild(tdDate)
-    let tdSeller = document.createElement('td')
+    let tdSeller = document.createElement("td")
     tdSeller.innerText = e.nameSeller
     trSale.appendChild(tdSeller)
-    let tdComponents = document.createElement('td')
+    let tdComponents = document.createElement("td")
     tdComponents.innerText = e.components
     trSale.appendChild(tdComponents)
-    let tdBranch = document.createElement('td')
+    let tdBranch = document.createElement("td")
     tdBranch.innerText = e.branch
     trSale.appendChild(tdBranch)
-    let tdTotalPrice = document.createElement('td')
+    let tdTotalPrice = document.createElement("td")
     tdTotalPrice.innerText = machinePrice(e.components)
     trSale.appendChild(tdTotalPrice)
     container.appendChild(trSale)
@@ -71,15 +71,15 @@ const createTable = () => {
 }
 
 const showOptions = () => {
-    let divShow = document.getElementById('newSale')
-    divShow.style.display = 'block'
+    let divShow = document.getElementById("newSale")
+    divShow.style.display = "block"
     
 }
 
 const newSale = () => {
-    let sentItem = document.getElementById('sent')
+    let sentItem = document.getElementById("sent")
     let sale =  { date:"", nameSeller: "", components: [], branch: ""}
-    let components = document.getElementById('components')
+    let components = document.getElementById("components")
     let selectedOptions = Array.from(components.selectedOptions)
     sale.components = selectedOptions.map(e => {
         return e.value
@@ -89,9 +89,9 @@ const newSale = () => {
     })
     let today = new Date
     sale.date = new Date (today.getFullYear(),today.getMonth(),today.getDate())
-    let nameSeller = document.getElementById('sellers')
+    let nameSeller = document.getElementById("sellers")
     sale.nameSeller = nameSeller.value
-    let branch = document.getElementById('branch')
+    let branch = document.getElementById("branch")
     sale.branch = branch.value
     shop.salesList.push(sale)
     createTable()
@@ -112,11 +112,11 @@ const machine = ["Monitor ASC 543", "Motherboard MZI"]
 console.log(`La venta de ${machine} tiene un costo de ARS ${machinePrice(machine)}`)
 
 //2) cantidadVentasComponente(componente)
-const saleQuantity = (sale) => {
+const saleQuantity = (component) => {
     let saleCount = 0
     shop.salesList.forEach(e => {
-        e.components.forEach( piece =>{
-            if(piece === sale){
+        e.components.forEach( product =>{
+            if(product === component){
                 saleCount++
             }
         })
@@ -138,8 +138,8 @@ const sellerOfTheMonth = (month, year) => {
     .nameSeller
     }
     
-    
-console.log('La mejor vendedora fue: ' + sellerOfTheMonth(1, 2019))
+    console.log(`La mejor vendedora fue:  ${sellerOfTheMonth(1, 2019)}`)   
+
 
 // 4) ventasMes(mes, anio)
 const monthlySales = (year, month, data = shop.salesList) => {
@@ -235,9 +235,9 @@ shop.salesList.forEach(e =>{
 }
 const nameSr = "Ada"
 const nameB = "Centro"
-console.log(`Las ventas totales de ${nameB} fueron: ARS ${totalSaleBranchSeller(nameB)}`)
+console.log(`'Asi puedo reutilizar el codigo eligiendo la constante que deseo ver:'`)
+console.log(`Ejemplo)-'Las ventas totales de ${nameB} fueron: ARS ${totalSaleBranchSeller(nameB)}'`)
 
-//Asi puedo reutilizar el codigo eligiendo la const que deseo ver
 
 
 //10) función sucursalDelMes(mes, anio)
@@ -252,7 +252,7 @@ const branchOfTheMonth = (month, year) => {
  }
  
 
- console.log('la mejor sucursal fue: ' + branchOfTheMonth(1, 2019))
+ console.log(`La mejor sucursal fue: ${branchOfTheMonth(1, 2019)}`)
 
  //11) Para tener una mejor muestra de como está resultando el local, queremos desarrollar un reporte que nos muestre las 
 //ventas por sucursal y por mes. Para esto, necesitamos crear las siguientes funciones:
@@ -281,7 +281,7 @@ const monthlyRender = year => {
     return salesPerMonth
 }
 console.log(`Las ventas mensuales durante el año 2019 fueron: `)
-console.table (monthlyRender(2019))
+console.table(monthlyRender(2019))
 
 //11.b) renderPorSucursal(): Muestra una lista del importe total vendido por cada sucursal
 
@@ -330,12 +330,12 @@ const theBestSeller = () =>{
     tdMonth.innerText = `Mes: ${e.month}`
     trRender.appendChild(tdMonth)
     let tdSale = document.createElement("td")
-    tdSale.innerText = `Total: ${e.sales}`
+    tdSale.innerText = `$ ${e.sales}`
     trRender.appendChild(tdSale)
     content.appendChild(trRender)
-    content.style.width = "100px"
-    content.style.margin = "0 auto"
+    
 })
+    
  }
 
     const totalRender = () => {
@@ -360,7 +360,7 @@ const theBestSeller = () =>{
     report.appendChild(description)
     report.style.fontSize = "16px"
     report.style.padding = "8px"
-
+    
     
 
     }
@@ -376,5 +376,3 @@ const theBestSeller = () =>{
 
 
   
-
-    
