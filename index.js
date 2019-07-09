@@ -207,7 +207,7 @@ const mostSold = () =>{
      if (aux === total) mostSoldComponent = component
     }) 
 
-    console.log(`El componente mas vendido es ${mostSoldComponent}`)
+    //console.log(`El componente mas vendido es ${mostSoldComponent}`)
     return mostSoldComponent
 }
 
