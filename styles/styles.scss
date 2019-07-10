@@ -102,13 +102,14 @@ body {
         margin-top: 35px;
         width: 100%;
     }
-
+    
     .report {
-        p {
+        p{
         margin-left: 25px;
         font-weight: bold;
         font-family: $font0;
         color: $color0;
+        font-display: center;  
         }
     }
 
@@ -134,6 +135,17 @@ a.buttom1 {
     background-color: $color0;
     color: $color1;
     text-decoration: none;
+}
+#delete {
+        margin: 40px;
+    font-family: $font0;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 4px;
+    background-color: $color0;
+    color: $color1;
+    text-decoration: none;
+
 }
 }
 
