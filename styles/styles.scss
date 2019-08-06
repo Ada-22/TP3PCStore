@@ -6,7 +6,7 @@ body {
     color: $color0;
     background-color: $color1;
     header {
-        .header {
+        .header { //los nombres de las clases deberían ser más descriptivos y no ser iguales a las etiquetas de html
             background: $url0;
             background: center;
             background-size: auto;

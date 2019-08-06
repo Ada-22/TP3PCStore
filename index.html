@@ -19,6 +19,7 @@
             <a href="#"class="buttom1"id ="buttom1"onclick ="showOptions()">Nueva venta</a>
             <div id="newSale" class="newSale">
                 <p class="itemNewSale">Elija un componente (o varios presionando 'ctrl'):</p>
+                <!-- el contenido de los selects se podría haber cargado dinamicamente-->
                 <select name="components" id="components" multiple>
                     <option value="Monitor GPRS 3000">Monitor GPRS 3000</option>
                     <option value="Motherboard ASUS 1500">Motherboard ASUS 1500</option>
@@ -60,6 +61,7 @@
                     </tbody>
                  </table>
                  <input type="delete" value="Cancelar Última Venta" id="delete" onclick ="deleteSale()" class="buttom1">
+                 <!-- el atributo type delete no existe, por lo tanto no funciona como botón y queda como type text permitiendo modificar el value, lo cual no debería suceder-->
         </section>
         <p id="report1">Reporte: </p>
             <div id ="report"class="report-detail" >
@@ -77,5 +79,7 @@
                              </table>
                             </div>
                         <footer class="buttom"><img src="images/div1.jpg"></footer>
+                        
                     </body>
                     </html>
+<!-- Mejorar indentación -->

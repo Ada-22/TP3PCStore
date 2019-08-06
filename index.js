@@ -49,7 +49,7 @@ const createTable = () => {
     shop.salesList.forEach(e => {
     let trSale = document.createElement("tr")
     let tdDate = document.createElement("td")
-    tdDate.innerText =`${e.date.getMonth() + 1}/${e.date.getFullYear()}`
+    tdDate.innerText = `${e.date.getMonth() + 1}/${e.date.getFullYear()}`
     trSale.appendChild(tdDate)
     let tdSeller = document.createElement("td")
     tdSeller.innerText = e.nameSeller
@@ -64,8 +64,8 @@ const createTable = () => {
     tdTotalPrice.innerText = machinePrice(e.components)
     trSale.appendChild(tdTotalPrice)
     container.appendChild(trSale)
-    
-    
+
+
     })
 
 }
@@ -85,8 +85,8 @@ const deleteOptions = ()=> {
 }
 
 const newSale = () => {
-    let sentItem = document.getElementById("sent")
-        sentItem = deleteOptions()
+    let sentItem = document.getElementById("sent") //en este caso no es necesario traer el elemento "sent"
+        sentItem = deleteOptions() // acá se está reasignando el valor a la variable declarada en la línea anterior
     let sale =  { date:"", nameSeller: "", components: [], branch: ""}
     let components = document.getElementById("components")
     let selectedOptions = Array.from(components.selectedOptions)
@@ -110,7 +110,7 @@ const newSale = () => {
 }
 
 const deleteSale = (sale) =>{
-    let node = document.getElementById("delete")
+    let node = document.getElementById("delete") // esto no cumple ninguna función
     shop.salesList.pop(sale)
     createTable()
     createTableRender()
@@ -300,7 +300,7 @@ const monthlyRender = year => {
     return salesPerMonth
 }
 console.log(`Las ventas mensuales durante el año 2019 fueron: `)
-console.table(monthlyRender(2019))
+console.table(monthlyRender(2019)) // 🙌💖
 
 //11.b) renderPorSucursal(): Muestra una lista del importe total vendido por cada sucursal
 
@@ -392,7 +392,12 @@ const theBestSeller = () =>{
     }
  
 
+/*
+Suegerencias:
+Se podría aprovechar el uso de destructuración y aplicarlo en cada función posible para lograr un código más consistente, como también el uso de string templates para mostrar resultados en consola aplicandolos dentro de la misma función para obtener los datos a mostrar ahí mismo y así evitar tener que crear tantas variables.
 
-
-
-  
+A mejorar:
+Indentación.
+Organización de funciones. Por ejemplo, agrupar las que manejan los datos primero y después las que modifican el dom, o viceversa, pero que sigan un orden.
+Borrar las líneas que no se utilicen en lugar de dejarlas comentadas
+*/
